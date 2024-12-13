@@ -1,0 +1,11 @@
+/* styles.scss
+Main entry point for all CSS files, importing global styles and components. */
+
+// Import all of Bootstrap's CSS
+// @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "bootstrap/scss/bootstrap";
+
+// Custom CSS Files
+@import './base/base'; 
+@import './components/navbar';
+@import './components/footer';

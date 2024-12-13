@@ -1,0 +1,38 @@
+// base/base.scss
+// Contains global reset, typography, and foundational styles for the application.
+
+/* Set default font styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 60px; // the height of my navbar
+}
+
+/* Hide all sections by default */
+.section {
+    display: none;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+  .even-sections {
+    background-color: var(--bs-dark-bg-subtle) !important;
+}
+
+
+.odd-sections {
+    background: #485563;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #29323c, #485563); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+}
+
+.btn {
+    border-radius: 100px;
+}

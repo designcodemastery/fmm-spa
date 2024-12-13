@@ -1,0 +1,106 @@
+// components/navbar.scss
+// Styles specifically for the navigation bar, including responsiveness and themes.
+// NavBar Custom CSS Styling
+
+/* Capitalize all text in the navbar */
+.navbar {
+  display: flex;
+  justify-content: center; /* Center contents by default */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+}
+
+/* Center nav items */
+.navbar-nav {
+  margin: 0 auto; /* Center navigation items */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navigation link styles */
+.nav-link {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1.2rem;  /* Font size */
+  position: relative;
+  padding-right: 1rem; /* Add space after the link */
+}
+
+.nav-link.active {
+  font-weight: 700;
+  color: var(--bs-warning) !important;
+}
+    
+.nav-link::after {
+  opacity: 0;
+  transition: all 0.2s;
+  height: 2px;
+  width: 100%;
+  background-color: var(--bs-warning);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+    
+.nav-link:hover::after {
+  content: '';
+  opacity: 1;
+}
+
+/* Brand text styles */
+.brand-text {
+  font-family: 'Urbanist', sans-serif;
+  font-style: bold;
+  font-weight: 700; /* Bold font weight */
+  font-size: 2rem;  /* Font size */
+  color: var(--bs-warning);
+  text-decoration: none;
+  display: none;
+}
+.navbar-brand.brand-text:focus,
+.navbar-brand.brand-text:active {
+  color: var(--bs-warning) !important;
+  text-decoration: none;
+}
+
+/* Larger Screens: >1500px */
+@media (min-width: 1499px) {
+  .navbar {
+      justify-content: space-between; /* Space out the brand and nav */
+      padding: 0.5rem 2rem; /* Adjust navbar padding */
+  }
+
+  .navbar .navbar-brand {
+      display: block; /* Show the brand */
+      margin-left: 2rem; /* Left margin for brand */
+  }
+
+  .navbar .navbar-nav {
+      margin-right: 2rem; /* Right margin for nav */
+  }
+}
+
+/* Small Screens: <1100px */
+@media (max-width: 1099px) {
+  .navbar {
+      flex-direction: column; /* Stack brand and toggler vertically */
+      align-items: center; /* Center align all elements */
+  }
+
+  .navbar .navbar-brand {
+      display: block; /* Show the brand */
+      font-size: 1.5rem; /* Adjust font size */
+      font-weight: bold; /* Bold text */
+      margin-bottom: 0.5rem; /* Add spacing below the brand */
+      margin-right: 0; /* Remove right margin */
+      text-align: center; /* Center text within its container */
+      width: 100%; /* Ensure it's treated as a block-level element */
+  }
+
+  .navbar .navbar-toggler {
+      display: block; /* Show the hamburger menu */
+      margin: 0 auto; /* Center the button horizontally */
+  }
+
+}
