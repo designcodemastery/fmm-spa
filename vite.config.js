@@ -2,7 +2,6 @@ import { resolve } from 'path';
 
 export default {
   root: resolve(__dirname, 'src'),
-  base: '/muckymayhem-spa/', // Replace with your GitHub repository name
   build: {
     outDir: resolve(__dirname, 'public'), // Output to the public folder
     emptyOutDir: true, // Clean the output folder before each build
