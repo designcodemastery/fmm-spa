@@ -1,5 +1,6 @@
 // navbar.js
-// Handles navigation bar interactions, such as toggling the hamburger menu.
+// Handles navigation bar interactions, such as toggling the hamburger menu and controlling section visibility.
+
 console.log('navbar.js is loaded');
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,24 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".nav-link"); // All nav links
     const navbarBrand = document.querySelector(".navbar-brand"); // Navbar brand link
     const navbarCollapse = document.querySelector(".navbar-collapse"); // Collapsible menu
+    const navbarToggler = document.querySelector(".navbar-toggler"); // Navbar toggler button
 
-    if (!sections.length) {
-      console.warn("No sections found in the document.");
-      return;
-    }
-
-    if (!navLinks.length) {
-      console.warn("No navigation links found in the document.");
-      return;
-    }
-
-    if (!navbarBrand) {
-      console.warn("Navbar brand link not found.");
-    }
-
-    if (!navbarCollapse) {
-      console.warn("Navbar collapse element not found.");
-    }
+    if (!sections.length) console.warn("No sections found in the document.");
+    if (!navLinks.length) console.warn("No navigation links found in the document.");
+    if (!navbarBrand) console.warn("Navbar brand link not found.");
+    if (!navbarCollapse) console.warn("Navbar collapse element not found.");
 
     // Function to show the target section and hide others
     const showSection = (targetId) => {
@@ -45,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to collapse the hamburger menu
     const collapseMenu = () => {
       try {
-        if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+        if (navbarCollapse instanceof Element && navbarCollapse.classList.contains("show")) {
           navbarCollapse.classList.remove("show"); // Collapse the menu
         }
       } catch (error) {
@@ -53,21 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
+    // Function to set the active navigation link
+    const setActiveLink = (clickedLink) => {
+      try {
+        document.querySelector(".active")?.classList.remove("active");
+        clickedLink.classList.add("active");
+      } catch (error) {
+        console.error("Error managing active class for navigation links:", error);
+      }
+    };
+
     // Add click event listeners to navigation links
     navLinks.forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault(); // Prevent default anchor behavior
-
         const targetId = link.getAttribute("href")?.replace("#", ""); // Get the target ID
-
         if (targetId) {
           try {
             showSection(targetId);
             collapseMenu();
-
-            // Update the active class for navigation links
-            navLinks.forEach((nav) => nav.classList.remove("active"));
-            link.classList.add("active");
+            setActiveLink(link);
           } catch (error) {
             console.error(`Error handling navigation link click for ID '${targetId}':`, error);
           }
@@ -81,13 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (navbarBrand) {
       navbarBrand.addEventListener("click", (event) => {
         event.preventDefault(); // Prevent default anchor behavior
-
         try {
           showSection("home"); // Show the hero section
           collapseMenu();
-
-          // Update the active class for navigation links
-          navLinks.forEach((nav) => nav.classList.remove("active"));
+          navLinks.forEach((nav) => nav.classList.remove("active")); // Reset active state
         } catch (error) {
           console.error("Error handling navbar brand click:", error);
         }
@@ -105,40 +96,15 @@ document.addEventListener("DOMContentLoaded", () => {
     navLinks.forEach((link) => {
       link.addEventListener("click", () => {
         try {
-          const isExpanded = window.getComputedStyle(navbarCollapse).display !== "none";
-          if (isExpanded) {
-            const navbarToggler = document.querySelector(".navbar-toggler");
-            if (navbarToggler) {
-              navbarToggler.click();
-            } else {
-              console.warn("Navbar toggler not found.");
-            }
+          if (navbarCollapse instanceof Element && navbarToggler && navbarCollapse.classList.contains("show")) {
+            navbarToggler.click(); // Toggle the menu if open
           }
         } catch (error) {
           console.error("Error handling navbar collapse on link click:", error);
         }
       });
     });
-
   } catch (error) {
     console.error("Error initializing navbar behavior:", error);
-  }
-
-  // Add active link management for better UX
-  try {
-    const navLinkEls = document.querySelectorAll('.nav-link');
-
-    navLinkEls.forEach((navLinkEl) => {
-      navLinkEl.addEventListener('click', () => {
-        try {
-          document.querySelector('.active')?.classList.remove('active');
-          navLinkEl.classList.add('active');
-        } catch (error) {
-          console.error("Error managing active class for navigation links:", error);
-        }
-      });
-    });
-  } catch (error) {
-    console.error("Error setting up active link management:", error);
   }
 });
