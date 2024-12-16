@@ -36,3 +36,59 @@ body {
 .btn {
     border-radius: 100px;
 }
+
+/* Desktop-specific styles (min-width: 1200px) */
+@media (min-width: 1200px) {
+  #about-us h1 {
+    font-size: 3rem; /* Larger font for desktop */
+  }
+  #about-us h2 {
+    font-size: 2.5rem;
+  }
+  #about-us h3 {
+    font-size: 2rem;
+  }
+  #about-us h4 {
+    font-size: 1.75rem;
+  }
+  #about-us h5 {
+    font-size: 1.5rem;
+  }
+  #about-us h6 {
+    font-size: 1.25rem;
+  }
+  #about-us p, #about-us li {
+    font-size: 1.125rem;
+  }
+  #about-us .blockquote p {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mobile-specific styles (max-width: 1199px) */
+@media (max-width: 1199px) {
+  #about-us h1 {
+    font-size: 2.5rem; /* Smaller font for mobile */
+  }
+  #about-us h2 {
+    font-size: 2rem;
+  }
+  #about-us h3 {
+    font-size: 1.75rem;
+  }
+  #about-us h4 {
+    font-size: 1.5rem;
+  }
+  #about-us h5 {
+    font-size: 1.25rem;
+  }
+  #about-us h6 {
+    font-size: 1.125rem;
+  }
+  #about-us p, #about-us li {
+    font-size: 1rem;
+  }
+  #about-us .blockquote p {
+    font-size: 1.125rem;
+  }
+}

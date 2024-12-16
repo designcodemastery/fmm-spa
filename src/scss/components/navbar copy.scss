@@ -2,19 +2,18 @@
 // Styles specifically for the navigation bar, including responsiveness and themes.
 // NavBar Custom CSS Styling
 
+/* Capitalize all text in the navbar */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center contents by default */
   align-items: center;
   padding: 0.5rem 1rem;
-  margin-bottom: 0;
-  padding-bottom: 0.25rem;
   text-transform: uppercase;
 }
 
 /* Center nav items */
 .navbar-nav {
-  margin: 0 auto;
+  margin: 0 auto; /* Center navigation items */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,17 +21,17 @@
 
 /* Navigation link styles */
 .nav-link {
-  font-family: "Urbanist", sans-serif;
-  font-size: 1.2rem;
+  font-family: 'Urbanist', sans-serif;
+  font-size: 1.2rem;  /* Font size */
   position: relative;
-  padding-right: 1rem;
+  padding-right: 1rem; /* Add space after the link */
 }
 
 .nav-link.active {
   font-weight: 700;
   color: var(--bs-warning) !important;
 }
-
+    
 .nav-link::after {
   opacity: 0;
   transition: all 0.2s;
@@ -43,29 +42,21 @@
   bottom: 0;
   left: 0;
 }
-
+    
 .nav-link:hover::after {
-  content: "";
+  content: '';
   opacity: 1;
 }
 
 /* Brand text styles */
-.navbar-brand {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  font-size: 1.5rem;
-}
-
 .brand-text {
-  font-family: "Urbanist", sans-serif;
+  font-family: 'Urbanist', sans-serif;
   font-style: bold;
-  font-weight: 700;
-  font-size: 2rem;
+  font-weight: 700; /* Bold font weight */
+  font-size: 2rem;  /* Font size */
   color: var(--bs-warning);
   text-decoration: none;
-  // display: none;
+  display: none;
 }
 .navbar-brand.brand-text:focus,
 .navbar-brand.brand-text:active {
@@ -75,43 +66,42 @@
 
 /* Custom breakpoint at 1200px */
 @media (min-width: 1200px) {
-  /* Show full navbar */
   .navbar-expand-custom .navbar-collapse {
-    display: flex !important;
-    flex-direction: row;
-    justify-content: center;
+    display: flex !important; /* Show full navbar */
+    flex-direction: row; /* Horizontal layout */
+    justify-content: center; /* Align nav links to the right */
     align-items: center;
   }
 
   .navbar-expand-custom .navbar-nav {
-    display: flex;
+    display: flex; /* Ensure nav links are displayed in a row */
     flex-direction: row;
-    gap: 1rem;
+    gap: 1rem; /* Add spacing between links */
   }
 
   .navbar-expand-custom .nav-item {
-    display: inline-block;
+    display: inline-block; /* Ensure items are horizontally aligned */
   }
   .navbar-expand-custom .navbar-toggler {
-    display: none;
+    display: none; /* Hide hamburger icon */
   }
 }
 
 @media (max-width: 1199px) {
   .navbar-expand-custom .navbar-toggler {
-    margin: 0 auto;
+    margin: 0 auto; /* Center horizontally */
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   .navbar-expand-custom .navbar-toggler-icon {
-    display: inline-block;
+    display: inline-block; /* Keep the icon inline */
   }
 
-  .navbar-expand-custom .navbar {
-    flex-direction: column;
-    align-items: center;
+  .navbar-expand-custom  .navbar {
+    flex-direction: column; /* Stack brand and toggler vertically */
+    align-items: center; /* Center align all elements */
   }
 
   .navbar-expand-custom .navbar-brand {
